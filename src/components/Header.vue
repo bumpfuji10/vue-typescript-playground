@@ -18,10 +18,17 @@
     text-align: center;
   }
 
+  a {
+    text-decoration: none;
+    color: hsla(160, 100%, 37%, 1);
+    transition: 0.4s;
+    padding: 8px;
+  }
+
 
   nav {
     font-size: 16px;
     text-align: center;
-    margin-top: 2rem;
+    margin-top: 8px;
   }
 </style>
