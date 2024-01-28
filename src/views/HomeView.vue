@@ -1,30 +1,32 @@
-<script setup lang="ts">
-defineProps<{
-
-}>()
-</script>
-
 <template>
+<h1 v-for="article in articles" :key="article.id">
+  <h2>{{ article.title }}</h2>
+  {{ article.body }}
+</h1>
 </template>
 
-<style scoped>
+<script lang="ts">
+import { getArticles } from './../api/article'
 
-h3 {
-  font-size: 1.2rem;
+export default {
+  name: 'HomeView',
+  data() {
+    return {
+      articles: []
+    }
+  },
+  mounted() {
+    this.getArticles()
+  },
+  methods: {
+    async getArticles(): Promise<void> {
+      try {
+        const response = await getArticles();
+        this.articles = response.data.contents
+      } catch(e) {
+        console.error(e);
+      }
+    }
+  }
 }
-
-.greetings h1,
-.greetings h3 {
-  text-align: center;
-}
-
-.me {
-  width: 100px;
-  height: 100px;
-  text-align: center;
-}
-
-</style>
-
-
-
+</script>
