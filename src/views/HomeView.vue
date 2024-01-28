@@ -8,11 +8,17 @@
 <script lang="ts">
 import { getArticles } from './../api/article'
 
+interface Article {
+  id: number,
+  title: string,
+  body: string
+}
+
 export default {
   name: 'HomeView',
   data() {
     return {
-      articles: []
+      articles: [] as Article[]
     }
   },
   mounted() {
