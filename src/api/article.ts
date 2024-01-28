@@ -6,7 +6,7 @@ export const getArticles = () => {
   return axios.get(
     url,
     {
-      headers: {"X-API-KEY": import.meta.env.VITE_HEADLESS_CMS_API_KEY}
+      headers: {"X-MICROCMS-API-KEY": import.meta.env.VITE_HEADLESS_CMS_API_KEY}
     }
   );
 };
