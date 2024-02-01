@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { getArticles } from '../api/article'
+import { getArticles } from '../../api/article'
 
 interface Article {
   id: number,
