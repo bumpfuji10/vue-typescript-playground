@@ -1,0 +1,19 @@
+.articleCard {
+  border: 1px solid #866d6d85;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+  cursor: pointer;
+}
+.articleCard:hover {
+  background-color: #3f323285;
+  transition: 0.3s;
+  -webkit-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -o-transition: 0.3s;
+}
+
+.articleTitle {
+  font-weight: 600;
+  border-bottom: 1px solid #866d6d85;
+}
