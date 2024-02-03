@@ -7,7 +7,7 @@ export default {
 <template>
   <header>
     <div class="wrapper">
-      <h1>Kyam Site</h1>
+      <h1 class="nav__title">Kyam Site</h1>
     </div>
   </header>
 </template>
