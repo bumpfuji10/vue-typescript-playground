@@ -1,12 +1,13 @@
 .articleCard {
-  border: 1px solid #866d6d85;
+  border: 1px solid #e5e6e7;
   border-radius: 10px;
-  padding: 10px;
+  padding: 0 10px;
   margin: 10px;
   cursor: pointer;
+  box-shadow: 2px 2px 2px 2px #e5e6e7;
 }
 .articleCard:hover {
-  background-color: #3f323285;
+  background-color: #ebeff3;
   transition: 0.3s;
   -webkit-transition: 0.3s;
   -moz-transition: 0.3s;
@@ -15,5 +16,5 @@
 
 .articleTitle {
   font-weight: 600;
-  border-bottom: 1px solid #866d6d85;
+  border-bottom: 1px solid #e5e6e7;
 }
