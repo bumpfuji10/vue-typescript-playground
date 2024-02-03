@@ -12,6 +12,10 @@
 
 <script lang="ts">
 import { getArticles } from '../../api/article'
+// https://www.npmjs.com/package/cheerio
+import { load } from 'cheerio';
+import hljs from 'highlight.js'
+import 'highlight.js/styles/hybrid.css';
 
 interface Article {
   id: number,
@@ -34,11 +38,24 @@ export default {
     async getArticles(): Promise<void> {
       try {
         const response = await getArticles();
-        this.articles = response.data.contents
-      } catch(e) {
+        this.articles = response.data.contents.map((article: Article) => {
+          // パース対象のHTMLコンテンツをloadの引数に格納
+          const $ = load(article.content);
+          $('pre code').each((_, elm) => {
+            const result = hljs.highlightAuto($(elm).text());
+            $(elm).html(result.value);
+            $(elm).addClass('hljs');
+          });
+          return {
+            ...article,
+            content: $.html()
+          };
+        });
+      } catch (e) {
         console.error(e);
       }
     },
+
   },
 }
 </script>
