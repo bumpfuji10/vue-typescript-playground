@@ -5,6 +5,7 @@
       <div class="articleCard">
         <h1 class="articleTitle">{{ article.title }}</h1>
         <div v-html="article.content" class="articleContent"></div>
+        <!-- <img :src="image_url" alt=""> -->
       </div>
     </div>
   </div>
@@ -21,6 +22,7 @@ interface Article {
   id: number,
   title: string,
   content: string,
+  image?: { url: string } // Assuming image is optional
 }
 
 export default {
@@ -28,7 +30,8 @@ export default {
   data() {
     return {
       articles: [] as Article[],
-      body: ""
+      body: "",
+      image_url: ""
     }
   },
   created() {
@@ -39,23 +42,27 @@ export default {
       try {
         const response = await getArticles();
         this.articles = response.data.contents.map((article: Article) => {
-          // パース対象のHTMLコンテンツをloadの引数に格納
-          const $ = load(article.content);
-          $('pre code').each((_, elm) => {
-            const result = hljs.highlightAuto($(elm).text());
-            $(elm).html(result.value);
-            $(elm).addClass('hljs');
-          });
+          const highlightedContent = this.highlightCode(article.content);
           return {
             ...article,
-            content: $.html()
-          };
+            content: highlightedContent.content
+          }
         });
       } catch (e) {
         console.error(e);
       }
     },
-
+    highlightCode(parsedHtml: string): {content: string } {
+      const $ = load(parsedHtml)
+      $('pre code').each((_, elm) => {
+        const result = hljs.highlightAuto($(elm).text());
+        $(elm).html(result.value);
+        $(elm).addClass('hljs');
+      });
+      return {
+        content: $.html(),
+      };
+    }
   },
 }
 </script>
