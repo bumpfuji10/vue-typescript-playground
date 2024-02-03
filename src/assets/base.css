@@ -9,3 +9,7 @@ body {
     margin: 10px;
   }
 }
+
+a, a:visited {
+  text-decoration:none;
+}

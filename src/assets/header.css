@@ -1,4 +1,14 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 .nav__title {
+  color: #7298bd;
   font-size: 24px;
   font-weight: 700;
+}
+
+.nav__link {
+  color: #7298bd;
 }
