@@ -5,6 +5,7 @@
       <div class="articleCard">
         <h1 class="articleTitle">{{ article.title }}</h1>
         <div v-html="article.content" class="articleContent"></div>
+        <!-- <img :src="image_url" alt=""> -->
       </div>
     </div>
   </div>
@@ -12,11 +13,16 @@
 
 <script lang="ts">
 import { getArticles } from '../../api/article'
+// https://www.npmjs.com/package/cheerio
+import { load } from 'cheerio';
+import hljs from 'highlight.js'
+import 'highlight.js/styles/hybrid.css';
 
 interface Article {
   id: number,
   title: string,
   content: string,
+  image?: { url: string } // Assuming image is optional
 }
 
 export default {
@@ -24,7 +30,8 @@ export default {
   data() {
     return {
       articles: [] as Article[],
-      body: ""
+      body: "",
+      image_url: ""
     }
   },
   created() {
@@ -34,11 +41,28 @@ export default {
     async getArticles(): Promise<void> {
       try {
         const response = await getArticles();
-        this.articles = response.data.contents
-      } catch(e) {
+        this.articles = response.data.contents.map((article: Article) => {
+          const highlightedContent = this.highlightCode(article.content);
+          return {
+            ...article,
+            content: highlightedContent.content
+          }
+        });
+      } catch (e) {
         console.error(e);
       }
     },
+    highlightCode(parsedHtml: string): {content: string } {
+      const $ = load(parsedHtml)
+      $('pre code').each((_, elm) => {
+        const result = hljs.highlightAuto($(elm).text());
+        $(elm).html(result.value);
+        $(elm).addClass('hljs');
+      });
+      return {
+        content: $.html(),
+      };
+    }
   },
 }
 </script>
