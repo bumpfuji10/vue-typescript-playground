@@ -23,3 +23,8 @@
   font-weight: 600;
 }
 
+.articleHeaderArea {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
