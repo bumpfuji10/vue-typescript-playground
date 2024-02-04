@@ -2,7 +2,7 @@
   <div class="main">
     <h1 class="nav-title">Archives</h1>
     <div v-for="article in articles" :key="article.id">
-      <div class="articleCard" @click="openShowArticlePage(article)">
+      <div class="articleCard" @click="openShowArticlePage(article.id)">
         <h1 class="articleTitle">{{ article.title }}</h1>
         <div v-html="article.content" class="articleContent"></div>
         <!-- <img :src="image_url" alt=""> -->
@@ -63,12 +63,12 @@ export default {
         content: $.html(),
       };
     },
-    openShowArticlePage(article: Article): void{
+    openShowArticlePage(id: number): void{
       this.$router.push(
         {
           name: 'ArticleShow',
           params: {
-            title: article.title,
+            id: id,
           }
         }
       );

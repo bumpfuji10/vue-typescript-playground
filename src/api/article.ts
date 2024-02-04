@@ -10,3 +10,13 @@ export const getArticles = () => {
     }
   );
 };
+
+export const getArticle = (articleId) => {
+  const articleUrl = `${URL}/${articleId}`;  // 記事IDを含めたURLを作成
+  return axios.get(
+    articleUrl,
+    {
+      headers: {"X-MICROCMS-API-KEY": import.meta.env.VITE_HEADLESS_CMS_API_KEY}
+    }
+  );
+};

@@ -17,7 +17,7 @@ const router = createRouter({
       component: About
     },
     {
-      path: '/articles/:title',
+      path: '/articles/:id',
       name: 'ArticleShow',
       component: ArticleShow,
       props: true
