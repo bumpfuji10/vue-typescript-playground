@@ -13,10 +13,7 @@
 
 <script lang="ts">
 import { getArticles } from '../../api/article'
-// https://www.npmjs.com/package/cheerio
-import { load } from 'cheerio';
-import hljs from 'highlight.js'
-import 'highlight.js/styles/hybrid.css';
+import { highlightCode } from '../../highlightCode'
 
 interface Article {
   id: number,
@@ -42,7 +39,7 @@ export default {
       try {
         const response = await getArticles();
         this.articles = response.data.contents.map((article: Article) => {
-          const highlightedContent = this.highlightCode(article.content);
+          const highlightedContent = highlightCode(article.content);
           return {
             ...article,
             content: highlightedContent.content
@@ -51,17 +48,6 @@ export default {
       } catch (e) {
         console.error(e);
       }
-    },
-    highlightCode(parsedHtml: string): {content: string } {
-      const $ = load(parsedHtml)
-      $('pre code').each((_, elm) => {
-        const result = hljs.highlightAuto($(elm).text());
-        $(elm).html(result.value);
-        $(elm).addClass('hljs');
-      });
-      return {
-        content: $.html(),
-      };
     },
     openShowArticlePage(id: number): void{
       this.$router.push(
