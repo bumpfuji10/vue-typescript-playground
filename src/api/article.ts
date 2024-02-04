@@ -11,7 +11,7 @@ export const getArticles = () => {
   );
 };
 
-export const getArticle = (articleId) => {
+export const getArticle = (articleId: number) => {
   const articleUrl = `${URL}/${articleId}`;  // 記事IDを含めたURLを作成
   return axios.get(
     articleUrl,

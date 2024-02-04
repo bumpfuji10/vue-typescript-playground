@@ -8,7 +8,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { getArticle } from '../../api/article'
 import { highlightCode } from '../../highlightCode'
 import moment from 'moment';
@@ -41,7 +41,8 @@ export default {
         console.error("Error fetching article:", error);
       }
     },
-    japanTimeCreatedAt(createdAt) {
+    // 多分stringじゃないので型をAPIスキーマ側の型を修正する必要がある気がする
+    japanTimeCreatedAt(createdAt: string) {
       return moment(createdAt).utcOffset('+09:00').format('YYYY/MM/DD HH:mm');
     }
   }
