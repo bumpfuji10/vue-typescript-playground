@@ -41,6 +41,7 @@ export default {
         console.error("Error fetching article:", error);
       }
     },
+    // 多分stringじゃないので型をAPIスキーマ側の型を修正する必要がある気がする
     japanTimeCreatedAt(createdAt: string) {
       return moment(createdAt).utcOffset('+09:00').format('YYYY/MM/DD HH:mm');
     }
