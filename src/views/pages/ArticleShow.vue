@@ -51,3 +51,10 @@ export default {
 };
 
 </script>
+
+<style>
+.articleContent img {
+  max-width: 500px;
+  height: auto;
+}
+</style>
