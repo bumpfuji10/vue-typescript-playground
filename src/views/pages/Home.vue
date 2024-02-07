@@ -65,7 +65,7 @@ export default {
 
 <style>
 .articleContent img {
-  max-width: 500px;
+  max-width: 400px;
   height: auto;
 }
 </style>

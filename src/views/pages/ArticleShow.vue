@@ -4,7 +4,7 @@
       <h1 class="articleTitle">{{ article.title }}</h1>
       <span class="articleCreatedAt">{{ article.createdAt }}</span>
     </div>
-    <div v-html="article.content"></div>
+    <div v-html="article.content" class="articleContent"></div>
   </div>
 </template>
 
@@ -54,7 +54,7 @@ export default {
 
 <style>
 .articleContent img {
-  max-width: 500px;
+  max-width: 400px;
   height: auto;
 }
 </style>
