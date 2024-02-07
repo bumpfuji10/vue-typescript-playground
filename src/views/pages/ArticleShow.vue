@@ -30,13 +30,15 @@ export default {
     this.getArticle()
   },
   methods: {
+    // ArticleShow.vue
     async getArticle() {
       try {
         const response = await getArticle(this.id);
         this.article.title = response.data.title;
         const highlightedContent = highlightCode(response.data.content);
-        this.article.content = highlightedContent.content;
-        this.article.createdAt = this.japanTimeCreatedAt(response.data.createdAt)
+        if (highlightedContent) { // highlightedContentがfalseでない場合のみ実行
+          this.article.content = highlightedContent.content;
+        }
       } catch (error) {
         console.error("Error fetching article:", error);
       }

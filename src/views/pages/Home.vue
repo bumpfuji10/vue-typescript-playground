@@ -42,8 +42,8 @@ export default {
           const highlightedContent = highlightCode(article.content);
           return {
             ...article,
-            content: highlightedContent.content
-          }
+            content: highlightedContent ? highlightedContent.content : "" // highlightedContentがfalseの場合は空の文字列をセット
+          };
         });
       } catch (e) {
         console.error(e);
