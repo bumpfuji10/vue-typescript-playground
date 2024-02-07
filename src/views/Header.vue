@@ -12,9 +12,9 @@ export default {
           Kyam Site
         </router-link>
       </h1>
-      <router-link to="/about" class="nav__link">
+      <!-- <router-link to="/about" class="nav__link">
         About
-      </router-link>
+      </router-link> -->
     </div>
   </header>
 </template>
