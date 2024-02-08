@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="main">
     <div class="articleHeaderArea">
       <h1 class="articleTitle">{{ article.title }}</h1>
       <span class="articleCreatedAt">{{ article.createdAt }}</span>
     </div>
-    <div v-html="article.content" class="articleContent"></div>
+    <div v-html="article.content" class="articleDetailContent"></div>
   </div>
 </template>
 
@@ -51,10 +51,3 @@ export default {
 };
 
 </script>
-
-<style>
-.articleContent img {
-  max-width: 400px;
-  height: auto;
-}
-</style>
