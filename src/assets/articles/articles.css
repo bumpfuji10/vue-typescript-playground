@@ -1,3 +1,7 @@
+.main {
+  overflow: auto; /* 追加: 内容がはみ出る場合にスクロールバーを表示 */
+}
+
 .articleCard {
   border: 1px solid #e5e6e7;
   border-radius: 10px;
@@ -6,6 +10,7 @@
   cursor: pointer;
   box-shadow: 2px 2px 2px 2px #e5e6e7;
 }
+
 .articleCard:hover {
   background-color: #ebeff3;
   transition: 0.3s;
@@ -17,6 +22,21 @@
 
 .articleContent {
   border-top: 1px solid #e5e6e7;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* 表示する行数 */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.articleDetailContent {
+  border-top: 1px solid #e5e6e7;
+  max-height: 500px; /* 追加: 内容の最大高さを指定 */
+}
+
+.articleDetailContent img {
+  max-width: 100%; /* 修正: カードの幅に合わせて調整 */
+  height: auto;
 }
 
 .articleTitle {
