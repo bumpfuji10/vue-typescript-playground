@@ -62,10 +62,3 @@ export default {
   },
 }
 </script>
-
-<style>
-.articleContent img {
-  max-width: 400px;
-  height: auto;
-}
-</style>
