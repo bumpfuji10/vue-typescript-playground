@@ -11,7 +11,7 @@
 <script lang="ts">
 import { getArticle } from '../../api/article'
 import { highlightCode } from '../../highlightCode'
-import moment from 'moment';
+import { japanTimeCreatedAt  } from '../../japanTimeCreatedAt';
 
 
 export default {
@@ -30,7 +30,6 @@ export default {
     this.getArticle()
   },
   methods: {
-    // ArticleShow.vue
     async getArticle() {
       try {
         const response = await getArticle(this.id);
@@ -39,13 +38,13 @@ export default {
         if (highlightedContent) { // highlightedContentがfalseでない場合のみ実行
           this.article.content = highlightedContent.content;
         }
+        this.article.createdAt = this.changeJtc(response.data.createdAt)
       } catch (error) {
         console.error("Error fetching article:", error);
       }
     },
-    // 多分stringじゃないので型をAPIスキーマ側の型を修正する必要がある気がする
-    japanTimeCreatedAt(createdAt: string) {
-      return moment(createdAt).utcOffset('+09:00').format('YYYY/MM/DD HH:mm');
+    changeJtc(createdAt: string) {
+      return japanTimeCreatedAt(createdAt)
     }
   }
 };
