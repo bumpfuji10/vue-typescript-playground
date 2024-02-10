@@ -3,9 +3,10 @@
     <h1 class="nav-title">Archives</h1>
     <div v-for="article in articles" :key="article.id">
       <div class="articleCard" @click="openShowArticlePage(article.id)">
-        <h1 class="articleTitle">{{ article.title }}</h1>
-        <div v-html="article.content" class="articleContent"></div>
-        <!-- <img :src="image_url" alt=""> -->
+        <div class="articleWrapper">
+          <h1 class="articleTitle">{{ article.title }}</h1>
+          <span class="articleCreatedAt">{{ changeJtc(article.createdAt) }}</span>
+        </div>
       </div>
     </div>
   </div>
@@ -13,13 +14,12 @@
 
 <script lang="ts">
 import { getArticles } from '../../api/article'
-import { highlightCode } from '../../highlightCode'
+import { japanTimeCreatedAt } from '../../japanTimeCreatedAt'
 
 interface Article {
   id: number,
   title: string,
-  content: string,
-  image?: { url: string } // Assuming image is optional
+  createdAt: ""
 }
 
 export default {
@@ -27,8 +27,6 @@ export default {
   data() {
     return {
       articles: [] as Article[],
-      body: "",
-      image_url: ""
     }
   },
   created() {
@@ -38,13 +36,7 @@ export default {
     async getArticles(): Promise<void> {
       try {
         const response = await getArticles();
-        this.articles = response.data.contents.map((article: Article) => {
-          const highlightedContent = highlightCode(article.content);
-          return {
-            ...article,
-            content: highlightedContent ? highlightedContent.content : "" // highlightedContentがfalseの場合は空の文字列をセット
-          };
-        });
+        this.articles = response.data.contents
       } catch (e) {
         console.error(e);
       }
@@ -58,6 +50,10 @@ export default {
           }
         }
       );
+    },
+    // 多分stringじゃないので型をAPIスキーマ側の型を修正する必要がある気がする
+    changeJtc(createdAt: string) {
+      return japanTimeCreatedAt(createdAt)
     }
   },
 }
