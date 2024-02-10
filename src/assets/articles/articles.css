@@ -2,6 +2,10 @@
   overflow: auto; /* 追加: 内容がはみ出る場合にスクロールバーを表示 */
 }
 
+.articleWrapper {
+  padding: 5px;
+}
+
 .articleCard {
   border: 1px solid #e5e6e7;
   border-radius: 10px;
