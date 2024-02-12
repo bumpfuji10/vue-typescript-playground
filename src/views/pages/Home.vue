@@ -1,8 +1,9 @@
 <template>
+  <title>Kyam Site</title>
   <div class="main">
     <h1 class="nav-title">Archives</h1>
     <div v-for="article in articles" :key="article.id">
-      <div class="articleCard" @click="openShowArticlePage(article.id)">
+      <div class="articleCard" @click="openShowArticlePage(article.id, article.title)">
         <div class="articleWrapper">
           <h1 class="articleTitle">{{ article.title }}</h1>
           <span class="articleCreatedAt">{{ changeJtc(article.createdAt) }}</span>
@@ -30,6 +31,7 @@ export default {
     }
   },
   created() {
+    document.title = "Kyam Site"
     this.getArticles();
   },
   methods: {
@@ -41,12 +43,14 @@ export default {
         console.error(e);
       }
     },
-    openShowArticlePage(id: number): void{
+    openShowArticlePage(id: number, title: string): void{
+      console.log(title)
       this.$router.push(
         {
           name: 'ArticleShow',
           params: {
             id: id,
+            title: title
           }
         }
       );

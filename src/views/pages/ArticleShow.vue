@@ -20,7 +20,7 @@ export default {
     return {
       article: {
         id: this.id,
-        title: "",
+        title: '',
         content: "",
         createdAt: ""
       },
@@ -28,12 +28,14 @@ export default {
   },
   created() {
     this.getArticle()
+    document.title = this.article.title
   },
   methods: {
     async getArticle() {
       try {
         const response = await getArticle(this.id);
         this.article.title = response.data.title;
+        document.title = response.data.title;
         const highlightedContent = highlightCode(response.data.content);
         if (highlightedContent) { // highlightedContentがfalseでない場合のみ実行
           this.article.content = highlightedContent.content;
