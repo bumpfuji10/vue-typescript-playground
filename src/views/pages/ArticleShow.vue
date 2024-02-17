@@ -37,7 +37,7 @@ export default {
         this.article.title = response.data.title;
         document.title = response.data.title;
         const highlightedContent = highlightCode(response.data.content);
-        if (highlightedContent) { // highlightedContentがfalseでない場合のみ実行
+        if (highlightedContent) {
           this.article.content = highlightedContent.content;
         }
         this.article.createdAt = this.changeJtc(response.data.createdAt)
