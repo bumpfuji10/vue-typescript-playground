@@ -31,20 +31,19 @@ export default {
     }
   },
   created() {
-    document.title = "Kyam Site"
     this.getArticles();
   },
   methods: {
     async getArticles(): Promise<void> {
       try {
         const response = await getArticles();
+        console.log(response.data.contents[6].image.url)
         this.articles = response.data.contents
       } catch (e) {
         console.error(e);
       }
     },
     openShowArticlePage(id: number, title: string): void{
-      console.log(title)
       this.$router.push(
         {
           name: 'ArticleShow',
