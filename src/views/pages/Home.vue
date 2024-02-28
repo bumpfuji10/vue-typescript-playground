@@ -39,7 +39,6 @@ export default {
     async getArticles(): Promise<void> {
       try {
         const response = await getArticles();
-        console.log(response.data.contents[6].image.url)
         this.articles = response.data.contents
       } catch (e) {
         console.error(e);
