@@ -16,7 +16,7 @@
 }
 
 .articleThumbnail {
-  max-width: 100px; /* 画像の最大幅を250pxに設定 */
+  max-width: 100px;
   height: auto;
   margin: 10px;
 }
