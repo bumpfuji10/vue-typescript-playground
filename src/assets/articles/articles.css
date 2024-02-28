@@ -3,12 +3,31 @@
 }
 
 .articleCard {
+  display: flex;
   border: 1px solid #e5e6e7;
   border-radius: 10px;
   padding: 0 10px;
   margin: 10px;
   cursor: pointer;
   box-shadow: 2px 2px 2px 2px #e5e6e7;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+
+.articleThumbnail {
+  max-width: 100px;
+  height: auto;
+  margin: 10px;
+}
+@media(max-width: 599px) {
+  .articleThumbnail {
+    max-width: 20%;
+    height: auto;
+  }
+  .articleTitle {
+    font-size: 20px;
+  }
 }
 
 .articleCard:hover {
@@ -48,3 +67,4 @@
   justify-content: space-between;
   align-items: baseline;
 }
+

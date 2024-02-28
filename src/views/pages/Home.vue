@@ -4,6 +4,7 @@
     <h1 class="nav-title">Archives</h1>
     <div v-for="article in articles" :key="article.id">
       <div class="articleCard" @click="openShowArticlePage(article.id, article.title)">
+        <img class="articleThumbnail" :src="article.image?.url" alt="Article thumbnail">
         <div class="articleWrapper">
           <h1 class="articleTitle">{{ article.title }}</h1>
           <span class="articleCreatedAt">{{ changeJtc(article.createdAt) }}</span>
@@ -20,6 +21,7 @@ import { japanTimeCreatedAt } from '../../japanTimeCreatedAt'
 interface Article {
   id: number,
   title: string,
+  image: { url: string },
   createdAt: ""
 }
 
@@ -31,7 +33,6 @@ export default {
     }
   },
   created() {
-    document.title = "Kyam Site"
     this.getArticles();
   },
   methods: {
@@ -44,7 +45,6 @@ export default {
       }
     },
     openShowArticlePage(id: number, title: string): void{
-      console.log(title)
       this.$router.push(
         {
           name: 'ArticleShow',
