@@ -1,6 +1,8 @@
 /* デフォルトスタイル */
 body {
   margin: 10px 350px;
+  font-family: YuGothic,游ゴシック,Meiryo,メイリオ,Hiragino Kaku Gothic Pro,ヒラギノ角ゴシック,sans-serif;
+  background-color: orange;
 }
 
 /* スマートフォンのブレークポイントでのスタイル変更 */
