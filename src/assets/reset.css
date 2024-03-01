@@ -19,8 +19,7 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1.6;
 	margin: 10px;
-	/* font-family: -apple-system,BlinkMacSystemFont,segoe ui,Roboto,Oxygen,Ubuntu,Cantarell,open sans,helvetica neue,sans-serif;; */
-	font-family: Noto Sans JP;
+	font-family: YuGothic,游ゴシック,Meiryo,メイリオ,Hiragino Kaku Gothic Pro,ヒラギノ角ゴシック,sans-serif
 }
 blockquote, q {
 	quotes: none;
