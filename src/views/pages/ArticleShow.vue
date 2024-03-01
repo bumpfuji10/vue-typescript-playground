@@ -4,7 +4,9 @@
       <h1 class="articleTitle">{{ article.title }}</h1>
       <span class="articleCreatedAt">{{ article.createdAt }}</span>
     </div>
-    <div v-html="article.content" class="articleDetailContent"></div>
+    <div class="articleDetailContainer">
+      <div v-html="article.content" class="articleDetail"></div>
+    </div>
   </div>
 </template>
 
