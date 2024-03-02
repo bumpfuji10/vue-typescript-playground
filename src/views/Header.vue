@@ -9,6 +9,7 @@ export default {
     <div>
       <router-link to="/" class="navLink">
         <img src="/src/assets/images/sphere.png" alt="" class="kyamSiteLogo">
+        Kyam Site
       </router-link>
     </div>
   </header>
