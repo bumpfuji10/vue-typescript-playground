@@ -1,14 +1,14 @@
 .nav__title {
-  color: #7298bd;
   font-size: 24px;
   font-weight: 700;
 }
 
 .navLink {
   display: flex;
-  color: #7298bd;
   align-items: center;
   gap: 20px;
+  font-weight: 600;
+  font-size: 20px;
 }
 
 .kyamSiteLogo {
