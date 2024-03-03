@@ -1,0 +1,22 @@
+.me_information {
+  text-align: center;
+}
+
+.jsonData {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  padding-right: 20px;
+}
+
+.me_name {
+  font-weight: 600;
+}
+
+.me_image {
+  border-radius: 50%;
+  max-height: 200px;
+  width: auto;
+  border: 4px solid;
+  background-color: rgb(201, 185, 185);
+}

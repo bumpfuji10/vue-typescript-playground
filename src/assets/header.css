@@ -6,9 +6,10 @@
 .navLink {
   display: flex;
   align-items: center;
-  gap: 20px;
-  font-weight: 600;
+  justify-content: space-between;
+  gap: 5px;
   font-size: 20px;
+  font-weight: 600;
 }
 
 .kyamSiteLogo {
