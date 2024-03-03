@@ -1,13 +1,5 @@
 <template>
-  <div class="skeltonScreen" v-if="is_loading">
-    <div class="skeltonHeaderArea" style="height: 50px; background-color: gray; border-radius: 10px; margin: 22px 0;">
-    </div>
-    <div class="skeltonContainer">
-      <div style="height: 500px; border-radius: 10px; background-color: gray;">
-
-      </div>
-    </div>
-  </div>
+  <SkeltonScreen v-if="is_loading" />
   <div class="main" v-else>
     <div class="articleHeaderArea">
       <h1 class="articleTitle">{{ article.title }}</h1>
@@ -23,9 +15,13 @@
 import { getArticle } from '../../api/article'
 import { highlightCode } from '../../highlightCode'
 import { japanTimeCreatedAt  } from '../../japanTimeCreatedAt';
+import SkeltonScreen from '../SkeltonScreen.vue'
 
 
 export default {
+  components: {
+    SkeltonScreen
+  },
   props: ['id'],
   data() {
     return {
@@ -46,9 +42,7 @@ export default {
     async getArticle() {
       try {
         this.is_loading = true;
-        console.log(this.is_loading)
         const response = await getArticle(this.id);
-        await new Promise(resolve => setTimeout(resolve, 4000));
         this.article.title = response.data.title;
         document.title = response.data.title;
         const highlightedContent = highlightCode(response.data.content);
@@ -57,7 +51,6 @@ export default {
         }
         this.article.createdAt = this.changeJtc(response.data.createdAt)
         this.is_loading = false
-        console.log(this.is_loading)
       } catch (error) {
         console.error("Error fetching article:", error);
       }
