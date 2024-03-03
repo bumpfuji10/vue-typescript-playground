@@ -1,7 +1,6 @@
 <template>
   <div class="skeltonScreen" v-if="is_loading">
-    <div class="skeltonHeaderArea" style="font-size: 50px; margin: 8px 0;">
-      ローディング中
+    <div class="skeltonHeaderArea" style="height: 50px; background-color: gray; border-radius: 10px; margin: 22px 0;">
     </div>
     <div class="skeltonContainer">
       <div style="height: 500px; border-radius: 10px; background-color: gray;">
