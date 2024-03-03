@@ -5,17 +5,22 @@
     </div>
     <div class="jsonData">
       <pre>
-        meInformation: {
+        {
           "name": "Yo Kamada",
           "age": 27,
           "hometown": "Shimane",
           "liveIn": "Yokohama",
           "job": "Web Engineer",
-          "languages": ["Japanese", "Ruby", "JavaScript"],
-          "frameworks": ["Ruby on Rails", "Vue.js"],
-          "experiencedLanguages": ["PHP", "TypeScript"],
-          "experiencedFrameWorks": ["Laravel"],
-          "other": "GraphQL",
+          "jobSkills": {
+            "languages": ["Ruby", "JavaScript"],
+            "frameworks": ["Ruby on Rails", "Vue.js"],
+            "others": ["Git", "SQL", "Docker"]
+          },
+          "experienced": {
+            "languages": ["PHP", "TypeScript"],
+            "frameworks": ["Laravel"],
+            "others": ["GraphQL"]
+          },
           "hobby": "Gymnastics"
         }
       </pre>
