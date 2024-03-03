@@ -1,5 +1,15 @@
 <template>
-  <div class="main">
+  <div class="skeltonScreen" v-if="is_loading">
+    <div class="skeltonHeaderArea" style="font-size: 50px; margin: 8px 0;">
+      ローディング中
+    </div>
+    <div class="skeltonContainer">
+      <div style="height: 500px; border-radius: 10px; background-color: gray;">
+
+      </div>
+    </div>
+  </div>
+  <div class="main" v-else>
     <div class="articleHeaderArea">
       <h1 class="articleTitle">{{ article.title }}</h1>
       <span class="articleCreatedAt">{{ article.createdAt }}</span>
@@ -24,8 +34,9 @@ export default {
         id: this.id,
         title: '',
         content: "",
-        createdAt: ""
+        createdAt: "",
       },
+      is_loading: false
     }
   },
   created() {
@@ -35,7 +46,10 @@ export default {
   methods: {
     async getArticle() {
       try {
+        this.is_loading = true;
+        console.log(this.is_loading)
         const response = await getArticle(this.id);
+        await new Promise(resolve => setTimeout(resolve, 4000));
         this.article.title = response.data.title;
         document.title = response.data.title;
         const highlightedContent = highlightCode(response.data.content);
@@ -43,6 +57,8 @@ export default {
           this.article.content = highlightedContent.content;
         }
         this.article.createdAt = this.changeJtc(response.data.createdAt)
+        this.is_loading = false
+        console.log(this.is_loading)
       } catch (error) {
         console.error("Error fetching article:", error);
       }
