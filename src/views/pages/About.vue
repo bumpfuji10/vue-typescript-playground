@@ -8,8 +8,15 @@
         meInformation: {
           "name": "Yo Kamada",
           "age": 27,
+          "hometown": "Shimane",
           "liveIn": "Yokohama",
-          "job": "Web Engineer"
+          "job": "Web Engineer",
+          "languages": ["Japanese", "Ruby", "JavaScript"],
+          "frameworks": ["Ruby on Rails", "Vue.js"],
+          "experiencedLanguages": ["PHP", "TypeScript"],
+          "experiencedFrameWorks": ["Laravel"],
+          "other": "GraphQL",
+          "hobby": "Gymnastics"
         }
       </pre>
     </div>
