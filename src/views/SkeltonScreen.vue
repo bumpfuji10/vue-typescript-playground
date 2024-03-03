@@ -12,6 +12,6 @@
 
 <script>
 export default {
-  name: "SkeltonScreent"
+  name: "SkeltonScreen"
 }
 </script>

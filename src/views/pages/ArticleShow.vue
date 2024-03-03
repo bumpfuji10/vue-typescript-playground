@@ -17,7 +17,6 @@ import { highlightCode } from '../../highlightCode'
 import { japanTimeCreatedAt  } from '../../japanTimeCreatedAt';
 import SkeltonScreen from '../SkeltonScreen.vue'
 
-
 export default {
   components: {
     SkeltonScreen
