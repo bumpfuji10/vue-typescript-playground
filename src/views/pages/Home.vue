@@ -6,7 +6,7 @@
       <div class="articleCard" @click="openShowArticlePage(article.id, article.title)">
         <img class="articleThumbnail" :src="article.image?.url" alt="Article thumbnail">
         <div class="articleWrapper">
-          <h1 class="articleTitle">{{ article.title }}</h1>
+          <h1 class="articleTitle" style="word-break: break-all;">{{ article.title }}</h1>
           <span class="articleCreatedAt">{{ changeJtc(article.createdAt) }}</span>
         </div>
       </div>
